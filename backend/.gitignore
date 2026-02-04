@@ -1,0 +1,66 @@
+# =========================
+# Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Build
+# =========================
+dist/
+build/
+out/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.local
+.env.*.local
+
+# =========================
+# Prisma
+# =========================
+prisma/dev.db
+prisma/dev.db-journal
+prisma/*.db
+prisma/*.db-journal
+/generated/prisma
+
+# Prisma generated client (normalmente NÃO versionar)
+node_modules/.prisma/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+
+# IntelliJ / WebStorm
+.idea/
+
+# =========================
+# Coverage / Tests
+# =========================
+coverage/
+
+# =========================
+# Docker
+# =========================
+docker-data/
+
+
+
