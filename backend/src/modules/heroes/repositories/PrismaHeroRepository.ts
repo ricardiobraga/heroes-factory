@@ -9,9 +9,33 @@ export class PrismaHeroRepository implements IHeroRepository {
     return prisma.hero.create({ data });
   }
 
-  async findAll(): Promise<Hero[]> {
-    return prisma.hero.findMany();
+ async findAll(
+    page = 1,
+    perPage = 10,
+    search?: string
+  ): Promise<{ heroes: Hero[]; total: number }> {
+    const where = search
+      ? {
+          OR: [
+            { name: { contains: search, mode: 'insensitive' } },
+            { nickname: { contains: search, mode: 'insensitive' } },
+          ],
+        }
+      : {};
+
+    const [heroes, total] = await prisma.$transaction([
+      prisma.hero.findMany({
+        where,
+        skip: (page - 1) * perPage,
+        take: perPage,
+        orderBy: { createdAt: 'desc' },
+      }),
+      prisma.hero.count({ where }),
+    ]);
+
+    return { heroes, total };
   }
+
 
   async findById(id: string): Promise<Hero | null> {
     return prisma.hero.findUnique({ where: { id } });

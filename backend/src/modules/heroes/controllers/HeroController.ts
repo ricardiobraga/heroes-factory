@@ -26,13 +26,19 @@ export class HeroController {
     }
 
     async list(req: Request, res: Response) {
-        const repository = new PrismaHeroRepository();
-        const service = new ListHeroesService(repository);
+  const page = Number(req.query.page) || 1;
+  const perPage = 10;
+  const search = req.query.search as string | undefined;
 
-        const heroes = await service.execute();
+  const repository = new PrismaHeroRepository();
+  const { heroes, total } = await repository.findAll(page, perPage, search);
 
-        return res.json(heroes);
-    }
+  const totalPages = Math.ceil(total / perPage);
+
+  return res.json({ heroes, page, perPage, totalPages });
+}
+
+
 
     async delete(
         req: Request<{ id: string }>,
@@ -40,7 +46,7 @@ export class HeroController {
     ) {
         const repository = new PrismaHeroRepository();
         const service = new DeleteHeroService(repository);
-        
+
         await service.execute(req.params.id);
 
         return res.status(204).send();
