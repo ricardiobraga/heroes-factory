@@ -3,24 +3,23 @@ import { IHeroRepository } from "./IHeroRepository";
 import { CreateHeroDTO } from "../dtos/CreateHeroDTO";
 import { UpdateHeroDTO } from "../dtos/UpdateHeroDTO";
 import { Hero } from "@prisma/client";
-
 export class PrismaHeroRepository implements IHeroRepository {
   async create(data: CreateHeroDTO): Promise<Hero> {
     return prisma.hero.create({ data });
   }
 
- async findAll(
+  async findAll(
     page = 1,
     perPage = 10,
     search?: string
   ): Promise<{ heroes: Hero[]; total: number }> {
     const where = search
       ? {
-          OR: [
-            { name: { contains: search, mode: 'insensitive' } },
-            { nickname: { contains: search, mode: 'insensitive' } },
-          ],
-        }
+        OR: [
+          { name: { contains: search.toLowerCase() } },
+          { nickname: { contains: search.toLowerCase() } },
+        ],
+      }
       : {};
 
     const [heroes, total] = await prisma.$transaction([
@@ -50,5 +49,12 @@ export class PrismaHeroRepository implements IHeroRepository {
 
   async delete(id: string): Promise<void> {
     await prisma.hero.delete({ where: { id } });
+  }
+
+  async updateStatus(id: string, isActive: boolean): Promise<void> {
+    await prisma.hero.update({
+      where: { id },
+      data: { isActive },
+    });
   }
 }

@@ -13,7 +13,7 @@ export class HeroController {
 
         const hero = await service.execute(req.body);
 
-        return res.status(201).json(hero);
+        return res.status(201).json({hero, success: true, message: `Herói criado com sucesso!`});
     }
 
     async update(req: Request<{ id: string }>, res: Response) {
@@ -22,23 +22,21 @@ export class HeroController {
         console.log(req.params.id);
         const hero = await service.execute(req.params.id, req.body);
 
-        return res.status(200).json(hero);
+        return res.status(200).json({ hero, sucess: true, message: `Herói atualizado com sucesso!` });
     }
 
     async list(req: Request, res: Response) {
-  const page = Number(req.query.page) || 1;
-  const perPage = 10;
-  const search = req.query.search as string | undefined;
+        const page = Number(req.query.page) || 1;
+        const perPage = 10;
+        const search = req.query.search as string | undefined;
 
-  const repository = new PrismaHeroRepository();
-  const { heroes, total } = await repository.findAll(page, perPage, search);
+        const repository = new PrismaHeroRepository();
+        const { heroes, total } = await repository.findAll(page, perPage, search);
 
-  const totalPages = Math.ceil(total / perPage);
+        const totalPages = Math.ceil(total / perPage);
 
-  return res.json({ heroes, page, perPage, totalPages });
-}
-
-
+        return res.json({ heroes, page, perPage, totalPages });
+    }
 
     async delete(
         req: Request<{ id: string }>,
@@ -49,6 +47,8 @@ export class HeroController {
 
         await service.execute(req.params.id);
 
-        return res.status(204).send();
+        return res.status(204).send({sucess: true, message: 'Herói excluído com sucesso'});
     }
+
+    
 }

@@ -8,4 +8,5 @@ export interface IHeroRepository {
   findById(id: string): Promise<Hero | null>;
   update(id: string, data: UpdateHeroDTO): Promise<Hero>;
   delete(id: string): Promise<void>;
+  updateStatus(id: string, isActive: boolean): Promise<void>;
 }

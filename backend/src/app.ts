@@ -1,10 +1,12 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
+import { getCorsConfig } from './shared/config/cors';
 
 import { heroesRoutes } from '@/modules/heroes/routes';
 import { AppError } from '@/shared/errors/AppError';
 
 const app = express();
-
+app.use(cors(getCorsConfig()));
 app.use(express.json());
 
 app.get('/', (_req, res) => {
