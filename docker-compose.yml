@@ -10,7 +10,6 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3308:3306"
     healthcheck:
@@ -18,6 +17,5 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    
 volumes:
   mysql_data:
