@@ -160,5 +160,3 @@ npm run dev
 
 # O frontend estará disponível em: http://localhost:3000
 ```
-
-### 5. Teste o projeto
