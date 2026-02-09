@@ -5,34 +5,36 @@ Um sistema completo de CRUD para gerenciamento de super-heróis desenvolvido com
 ## 📋 Visão Geral
 
 Este projeto demonstra habilidades full-stack implementando um sistema robusto com:
+
 - **Backend**: API RESTful em Node.js/TypeScript com Express e Prisma ORM
 - **Frontend**: Aplicação Next.js com App Router e Ant Design
-- **Banco de Dados**: MySQL/MariaDB com Docker
+- **Banco de Dados**: MySQL com Docker
 - **Infraestrutura**: Docker Compose para ambiente completo
 
 ## 🏗️ Arquitetura Técnica
 
 ### **Backend Structure**
+
 ```bash
 backend/
 ├── src/
-│ ├── modules/ 
+│ ├── modules/
 │ │ └── heroes/
 │ │ ├── controller.ts
 │ │ ├── service.ts
 │ │ ├── repository.ts
 │ │ └── validations.ts
-│ ├── shared/ 
+│ ├── shared/
 | ├  ├── config/
-│ │ ├── database/ 
-│ │ └── errors/ 
-│ ├── app.ts 
-│ └── server.ts 
+│ │ ├── database/
+│ │ └── errors/
+│ ├── app.ts
+│ └── server.ts
 ├── prisma/
 │ ├── schema.prisma
-│ ├── migrations/ 
-│ └── seed.ts 
-└── prisma.config.ts 
+│ ├── migrations/
+│ └── seed.ts
+└── prisma.config.ts
 ```
 
 ### **Frontend Structure**
@@ -40,73 +42,100 @@ backend/
 ```bash
 frontend/
 ├── app/
-│ ├── heroes/ 
-│ │ ├── page.tsx 
-│ │ ├── HeroList.tsx 
-│ │ ├── HeroCard.tsx 
-│ │ └── components/ 
+│ ├── heroes/
+│ │ ├── page.tsx
+│ │ ├── HeroList.tsx
+│ │ ├── HeroCard.tsx
+│ │ └── components/
 │ ├── components/
 │ │ ├── HeroFormModal/
 │ │ ├── HeroDetailsModal/
 │ │ └── SearchBar/
-│ ├── services/ 
+│ ├── services/
 │ │ └── heroes.service.ts
-│ ├── types/ 
+│ ├── types/
 │ │ └── hero.ts
-│ ├── layout.tsx 
-│ └── page.tsx 
+│ ├── layout.tsx
+│ └── page.tsx
 ├── config/
-│ └── themeConfig.ts 
-└── public/ 
+│ └── themeConfig.ts
+└── public/
 ```
 
+### 🧪 Testes Automatizados
+
+Este projeto possui testes unitários no backend focados na camada de serviços (Services), garantindo que as regras de negócio funcionem de forma isolada, sem dependência de banco de dados ou infraestrutura externa.
+
+```bash
+backend/
+├── tests/
+│ └── unit/
+│ └── heroes/
+│ └── services/
+│ ├── CreateHeroService.spec.ts
+│ ├── ListHeroesService.spec.ts
+│ ├── UpdateHeroService.spec.ts
+│ ├── UpdateHeroStatusService.spec.ts
+│ └── DeleteHeroService.spec.ts
+├── **mocks**/
+│ └── HeroRepositoryMock.ts
+├── jest.config.ts
+└── jest.setup.ts
+
+```
 
 ## 🚀 Stack Tecnológica
 
 ### **Backend**
-- **Node.js** + **TypeScript** 
-- **Express.js** 
-- **Prisma ORM** 
-- **MySQL/MariaDB** 
-- **Docker** 
+
+- **Node.js** + **TypeScript**
+- **Express.js**
+- **Prisma ORM**
+- **MySQL/MariaDB**
+- **Docker**
 
 ### **Frontend**
-- **Next.js 16** 
-- **Ant Design** 
-- **TypeScript** 
-- **CSS Modules** 
+
+- **Next.js 16**
+- **Ant Design**
+- **TypeScript**
+- **CSS Modules**
 
 ## ✨ Features Implementadas
 
 ### **Funcionalidades de Negócio**
+
 - ✅ **CRUD Completo** - Create, Read, Update, Delete de heróis
 - ✅ **Paginação Server-Side** - Performance otimizada com controle no backend
 - ✅ **Busca em Tempo Real** - Filtro por nome e apelido
 - ✅ **Status Ativo/Inativo** - Toggle com validação de regras de negócio
 
 ### **Experiência do Usuário**
+
 - ✅ **Interface Responsiva** - Mobile-first design
 - ✅ **Modais Contextuais** - Confirmações para ações destrutivas
 - ✅ **Feedback Visual** - Toasts e loadings para todas as operações
 - ✅ **Validação em Tempo Real** - Prevenção de erros do usuário
 
 ### **Qualidade de Código**
+
 - ✅ **Separação de Responsabilidades** - Clean Architecture
 - ✅ **Type Safety** - TypeScript em todo o projeto
 - ✅ **Error Handling** - Tratamento consistente de erros
 - ✅ **Code Splitting** - Otimização de bundle
 - ✅ **Environment Config** - Variáveis por ambiente
 
-
 ## 🔧 Configuração e Execução do Projeto
 
 ### 1. Clone e Acesse o Projeto
+
 ```bash
 git clone git@github.com:ricardiobraga/heroes-factory.git
 cd heroes-factory
-```
+````
 
 ### 2. 2. Suba o Banco de Dados com Docker
+
 ```bash
 docker-compose up -d
 ```
@@ -140,6 +169,16 @@ npm run dev
 
 # O backend estará disponível em: http://localhost:3001
 ```
+
+## Para executar os testes unitários
+
+```bash
+# Acesse a pasta do backend
+cd backend
+
+npm run test:unit
+```
+
 ### 4. Inicie o Frontend
 
 ```bash
