@@ -83,7 +83,7 @@ backend/
 └── jest.setup.ts
 ```
 
-## 🚀 Stack Tecnológica
+## 🚀 Stacks
 
 ### **Backend**
 
