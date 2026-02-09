@@ -70,18 +70,17 @@ Este projeto possui testes unitários no backend focados na camada de serviços 
 backend/
 ├── tests/
 │ └── unit/
-│ └── heroes/
-│ └── services/
-│ ├── CreateHeroService.spec.ts
-│ ├── ListHeroesService.spec.ts
-│ ├── UpdateHeroService.spec.ts
-│ ├── UpdateHeroStatusService.spec.ts
-│ └── DeleteHeroService.spec.ts
-├── **mocks**/
+│   └── heroes/
+│     └── services/
+│       ├── CreateHeroService.spec.ts
+│       ├── ListHeroesService.spec.ts
+│       ├── UpdateHeroService.spec.ts
+│       ├── UpdateHeroStatusService.spec.ts
+│       └── DeleteHeroService.spec.ts
+├── __mocks__/
 │ └── HeroRepositoryMock.ts
 ├── jest.config.ts
 └── jest.setup.ts
-
 ```
 
 ## 🚀 Stack Tecnológica
@@ -132,7 +131,7 @@ backend/
 ```bash
 git clone git@github.com:ricardiobraga/heroes-factory.git
 cd heroes-factory
-````
+```
 
 ### 2. 2. Suba o Banco de Dados com Docker
 
