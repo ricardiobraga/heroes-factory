@@ -13,7 +13,7 @@ export class HeroController {
 
         const hero = await service.execute(req.body);
 
-        return res.status(201).json({hero, success: true, message: `Herói criado com sucesso!`});
+        return res.status(201).json({ hero, success: true, message: `Herói criado com sucesso!` });
     }
 
     async update(req: Request<{ id: string }>, res: Response) {
@@ -31,7 +31,12 @@ export class HeroController {
         const search = req.query.search as string | undefined;
 
         const repository = new PrismaHeroRepository();
-        const { heroes, total } = await repository.findAll(page, perPage, search);
+        const service = new ListHeroesService(repository);
+        const { heroes, total } = await service.execute(
+            page,
+            perPage,
+            search as string
+        );
 
         const totalPages = Math.ceil(total / perPage);
 
@@ -47,8 +52,8 @@ export class HeroController {
 
         await service.execute(req.params.id);
 
-        return res.status(204).send({sucess: true, message: 'Herói excluído com sucesso'});
+        return res.status(204).send({ sucess: true, message: 'Herói excluído com sucesso' });
     }
 
-    
+
 }

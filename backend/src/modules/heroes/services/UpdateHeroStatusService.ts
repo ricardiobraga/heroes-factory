@@ -10,10 +10,10 @@ export class UpdateHeroStatusService {
     constructor(private heroRepository: IHeroRepository) { }
 
     async execute({ id, isActive }: Request): Promise<void> {
-        // opcional: verificar se herói existe
         const heroExists = await this.heroRepository.findById(id);
         if (!heroExists) {
-            throw new AppError("Hero not found", 404);
+            throw new AppError("Heroi não encontrado", 404);
+            
         }
 
         await this.heroRepository.updateStatus(id, isActive);

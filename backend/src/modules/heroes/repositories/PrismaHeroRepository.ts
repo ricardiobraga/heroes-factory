@@ -9,31 +9,34 @@ export class PrismaHeroRepository implements IHeroRepository {
   }
 
   async findAll(
-    page = 1,
-    perPage = 10,
+    page: number,
+    perPage: number,
     search?: string
-  ): Promise<{ heroes: Hero[]; total: number }> {
+  ) {
     const where = search
       ? {
         OR: [
-          { name: { contains: search.toLowerCase() } },
-          { nickname: { contains: search.toLowerCase() } },
+          { name: { contains: search, mode: "insensitive" } },
+          { nickname: { contains: search, mode: "insensitive" } },
         ],
       }
-      : {};
+      : undefined;
 
-    const [heroes, total] = await prisma.$transaction([
+    const [heroes, total] = await Promise.all([
       prisma.hero.findMany({
-        where,
         skip: (page - 1) * perPage,
         take: perPage,
-        orderBy: { createdAt: 'desc' },
+        where,
       }),
       prisma.hero.count({ where }),
     ]);
 
-    return { heroes, total };
+    return {
+      heroes,
+      total,
+    };
   }
+
 
 
   async findById(id: string): Promise<Hero | null> {
