@@ -8,7 +8,7 @@ const { useBreakpoint } = Grid;
 
 interface SearchBarProps {
   onCreate: () => void;
-  onSearch: (value: string) => void; // nova prop
+  onSearch: (value: string) => void;
 }
 
 export default function SearchBar({ onCreate, onSearch }: SearchBarProps) {

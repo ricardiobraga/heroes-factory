@@ -35,22 +35,17 @@ export default function HeroesClient({ initialData }: Props) {
   const [selectedHero, setSelectedHero] = useState<Hero | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
 
-  // ✅ Estado para controlar qual modal está aberto
   const [activeModal, setActiveModal] = useState<{
     type: "delete" | "toggle" | null;
     hero: Hero | null;
   }>({ type: null, hero: null });
 
-  // ✅ App.useApp só para message
-    const { message: messageApi, modal: modalApi } = App.useApp();
+  const { message: messageApi, modal: modalApi } = App.useApp();
 
-  // ✅ Modal seguro com contexto
   const [modal, modalContextHolder] = Modal.useModal();
 
-  // ✅ Efeito para limpar modais duplicados
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Limpa qualquer modal duplicado no mount
       const modals = document.querySelectorAll(".ant-modal-root");
       if (modals.length > 1) {
         Modal.destroyAll();
@@ -123,7 +118,6 @@ export default function HeroesClient({ initialData }: Props) {
   };
 
   const handleDelete = (hero: Hero) => {
-    // Verifica se já tem um modal aberto
     if (activeModal.type) {
       Modal.destroyAll();
     }
@@ -154,12 +148,10 @@ export default function HeroesClient({ initialData }: Props) {
       },
     });
 
-    // Retorna a instância para controle
     return modalInstance;
   };
 
   const handleToggle = (hero: Hero) => {
-    // Verifica se já tem um modal aberto
     if (activeModal.type) {
       Modal.destroyAll();
     }
@@ -194,7 +186,6 @@ export default function HeroesClient({ initialData }: Props) {
       },
     });
 
-    // Retorna a instância para controle
     return modalInstance;
   };
 
@@ -205,7 +196,6 @@ export default function HeroesClient({ initialData }: Props) {
 
   return (
     <>
-      {/* Context holder do modal, obrigatório */}
       {modalContextHolder}
 
       <SearchBar onCreate={handleCreate} onSearch={handleSearch} />

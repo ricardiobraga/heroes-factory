@@ -1,7 +1,5 @@
 import { getHeroes } from "@/app/services/heroes.service";
 import HeroesClient from "./HeroClient";
-import { App } from "antd";
-
 interface PageProps {
   searchParams?: {
     page?: string;
