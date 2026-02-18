@@ -16,8 +16,8 @@ export class PrismaHeroRepository implements IHeroRepository {
     const where = search
       ? {
         OR: [
-          { name: { contains: search, mode: "insensitive" } },
-          { nickname: { contains: search, mode: "insensitive" } },
+          { name: { contains: search } },
+          { nickname: { contains: search } },
         ],
       }
       : undefined;
