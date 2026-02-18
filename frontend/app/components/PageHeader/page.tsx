@@ -1,11 +1,14 @@
-'use client';
+"use client";
 import Typography from "antd/lib/typography";
 
-export default function PageHeader() {
+type PageHeaderProps = {
+  fetchPage: (page: number) => void;
+};
 
+export default function PageHeader({ fetchPage }: PageHeaderProps) {
   return (
-    <Typography.Title color="primary" level={1}>
-      teste teste
+    <Typography.Title onClick={() => fetchPage(1)} level={1}  style={{ textAlign: "center", color: '#0e2fbb', cursor: "pointer" }}>
+      Heróis
     </Typography.Title>
   );
 }

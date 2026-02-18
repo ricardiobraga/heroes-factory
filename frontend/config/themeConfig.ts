@@ -9,6 +9,7 @@ const theme: ThemeConfig = {
     fontSizeHeading4: 18,
     fontSizeHeading5: 16,
     colorPrimary: '#0e2fbb',
+    
   },
   components: {
     Input: {

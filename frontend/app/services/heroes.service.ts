@@ -24,7 +24,8 @@ export async function getHeroes(
     );
 
     if (!res.ok) {
-        throw new Error("Erro ao buscar heróis");
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData?.message || "Erro ao buscar heróis");
     }
 
     return res.json();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Pagination, Modal, App } from "antd";
 import { Hero } from "@/app/types/hero";
 import HeroList from "./HeroList";
@@ -12,8 +12,9 @@ import {
   toggleHero,
   getHeroes,
 } from "@/app/services/heroes.service";
-import { HeroFormModal } from "../HeroFormModal/HeroFormModal";
-import HeroDetailsModal from "../HeroDetailsModal/HeroDetailsModal";
+import { HeroFormModal } from "@/app/components/HeroFormModal/HeroFormModal";
+import HeroDetailsModal from "@/app/components/HeroDetailsModal/HeroDetailsModal";
+import PageHeader from "@/app/components/PageHeader/page";
 
 interface Props {
   initialData: {
@@ -66,6 +67,8 @@ export default function HeroesClient({ initialData }: Props) {
       setLoading(false);
     }
   };
+
+
 
   const handleSearch = async (search: string) => {
     setLoading(true);
@@ -197,7 +200,7 @@ export default function HeroesClient({ initialData }: Props) {
   return (
     <>
       {modalContextHolder}
-
+      <PageHeader fetchPage={fetchPage} />
       <SearchBar onCreate={handleCreate} onSearch={handleSearch} />
       <HeroList
         heroes={heroes}

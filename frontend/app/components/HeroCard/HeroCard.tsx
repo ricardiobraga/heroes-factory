@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Card,
   Dropdown,
@@ -34,7 +32,6 @@ export default function HeroCard({
   onToggle,
   onOpenDetails,
 }: HeroCardProps) {
-  // Construa os itens do menu fora do JSX principal
   const getMenuItems = (): MenuProps["items"] => {
     const items: MenuProps["items"] = [
       {
@@ -46,7 +43,7 @@ export default function HeroCard({
         ),
 
         onClick: (e) => {
-          e.domEvent.stopPropagation(); // Importante!
+          e.domEvent.stopPropagation();
           onEdit(hero);
         },
       },
@@ -63,7 +60,7 @@ export default function HeroCard({
         ),
 
         onClick: (e) => {
-          e.domEvent.stopPropagation(); // Importante!
+          e.domEvent.stopPropagation();
           onDelete(hero);
         },
       });
@@ -108,10 +105,10 @@ export default function HeroCard({
         menu={{
           items: getMenuItems(),
           onClick: (info) => {
-            info.domEvent.stopPropagation(); // Previene propagação
+            info.domEvent.stopPropagation();
           },
         }}
-        destroyOnHidden // ← IMPORTANTE: Destrói o popup quando esconder
+        destroyOnHidden
         autoAdjustOverflow
       >
         <EllipsisOutlined
@@ -138,7 +135,7 @@ export default function HeroCard({
       >
         <Flex align="center" gap={16} vertical>
           <Image
-            src={hero.avatarUrl ?? "/avatar-placeholder.webp"}
+            src={hero.avatarUrl}
             alt={hero.name}
             width={96}
             height={96}
@@ -150,7 +147,7 @@ export default function HeroCard({
             }}
           />
 
-          <Title level={5} style={{ margin: 0 }}>
+          <Title level={5} style={{ margin: 0, textAlign: "center" }}>
             {hero.nickname}
           </Title>
         </Flex>
