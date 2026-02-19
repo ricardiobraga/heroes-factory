@@ -67,20 +67,24 @@ frontend/
 Este projeto possui testes unitários no backend focados na camada de serviços (Services), garantindo que as regras de negócio funcionem de forma isolada, sem dependência de banco de dados ou infraestrutura externa.
 
 ```bash
-backend/
-├── tests/
-│ └── unit/
-│   └── heroes/
-│     └── services/
-│       ├── CreateHeroService.spec.ts
-│       ├── ListHeroesService.spec.ts
-│       ├── UpdateHeroService.spec.ts
-│       ├── UpdateHeroStatusService.spec.ts
-│       └── DeleteHeroService.spec.ts
-├── __mocks__/
-│ └── HeroRepositoryMock.ts
-├── jest.config.ts
-└── jest.setup.ts
+backend
+├── backend/tests
+│   ├── backend/tests/unit
+│   │   └── backend/tests/unit/heroes
+│   │       └── backend/tests/unit/heroes/services
+│   │           ├── backend/tests/unit/heroes/services/CreateHeroService.spec.ts
+│   │           ├── backend/tests/unit/heroes/services/ListHeroesService.spec.ts
+│   │           ├── backend/tests/unit/heroes/services/UpdateHeroService.spec.ts
+│   │           ├── backend/tests/unit/heroes/services/UpdateHeroStatusService.spec.ts
+│   │           └── backend/tests/unit/heroes/services/DeleteHeroService.spec.ts
+│   ├── backend/tests/integration
+│   │   └── backend/tests/integration/heroes
+│   │       ├── backend/tests/integration/heroes/create-hero.spec.ts
+│   │       ├── backend/tests/integration/heroes/list-heroes.spec.ts
+│   │       ├── backend/tests/integration/heroes/update-hero.spec.ts
+│   │       └── backend/tests/integration/heroes/delete-hero.spec.ts
+├── backend/jest.config.ts
+└── backend/jest.setup.ts
 ```
 
 ## 🚀 Stacks
