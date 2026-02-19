@@ -25,7 +25,7 @@ backend/
 │ │ ├── repository.ts
 │ │ └── validations.ts
 │ ├── shared/
-| ├  ├── config/
+| │ ├── config/
 │ │ ├── database/
 │ │ └── errors/
 │ ├── app.ts
