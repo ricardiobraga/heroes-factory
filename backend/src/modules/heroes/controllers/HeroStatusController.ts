@@ -6,14 +6,13 @@ export class HeroStatusController {
         req: Request<{ id: string }>,
         res: Response
     ) {
-        const { id } = req.params;
-        const { isActive } = req.body;
+        
+        
 
         const repository = new PrismaHeroRepository();
         const service = new UpdateHeroStatusService(repository);
+        const hero = await service.execute(req.params.id, req.body);
 
-        await service.execute({ id, isActive });
-
-        return res.status(200).json({ sucess: true, message: `Herói atualizado com sucesso!` });
+        return res.status(200).json({ hero, sucess: true, message: `Herói atualizado com sucesso!` });
     }
 }

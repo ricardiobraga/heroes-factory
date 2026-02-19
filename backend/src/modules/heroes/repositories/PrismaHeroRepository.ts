@@ -3,6 +3,7 @@ import { IHeroRepository } from "./IHeroRepository";
 import { CreateHeroDTO } from "../dtos/CreateHeroDTO";
 import { UpdateHeroDTO } from "../dtos/UpdateHeroDTO";
 import { Hero } from "@prisma/client";
+import { UpdateHeroStatusDTO } from "../dtos/UpdateHeroStatusDTO";
 export class PrismaHeroRepository implements IHeroRepository {
   async create(data: CreateHeroDTO): Promise<Hero> {
     return prisma.hero.create({ data });
@@ -52,10 +53,10 @@ export class PrismaHeroRepository implements IHeroRepository {
     await prisma.hero.delete({ where: { id } });
   }
 
-  async updateStatus(id: string, isActive: boolean): Promise<void> {
-    await prisma.hero.update({
+  async updateStatus(id: string, data: UpdateHeroStatusDTO): Promise<Hero> {
+    return prisma.hero.update({
       where: { id },
-      data: { isActive },
+      data,
     });
   }
 }

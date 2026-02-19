@@ -1,7 +1,6 @@
 import request from 'supertest';
 import app from '@/app';
 
-
 describe('List Heroes (Integration)', () => {
   it('should list heroes from database', async () => {
     await request(app).post('/heroes').send({
