@@ -17,5 +17,24 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  heroes-factory-db-test:
+    image: mysql:8.0
+    container_name: heroes-factory-db-test
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: heroes_factory_test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    volumes:
+      - mysql_data_test:/var/lib/mysql
+    ports:
+      - "3309:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
   mysql_data:
+  mysql_data_test:

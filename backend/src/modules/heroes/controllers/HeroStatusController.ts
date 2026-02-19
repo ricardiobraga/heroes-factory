@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaHeroRepository } from "../repositories/PrismaHeroRepository";
 import { UpdateHeroStatusService } from "../services/UpdateHeroStatusService";
-import { prisma } from "@/shared/database/prisma";
-
 export class HeroStatusController {
     async update(
         req: Request<{ id: string }>,

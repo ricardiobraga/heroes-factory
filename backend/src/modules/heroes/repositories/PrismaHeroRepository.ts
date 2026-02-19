@@ -1,4 +1,4 @@
-import { prisma } from "../../../shared/database/prisma";
+import { prisma } from "@/app";
 import { IHeroRepository } from "./IHeroRepository";
 import { CreateHeroDTO } from "../dtos/CreateHeroDTO";
 import { UpdateHeroDTO } from "../dtos/UpdateHeroDTO";
@@ -36,8 +36,6 @@ export class PrismaHeroRepository implements IHeroRepository {
       total,
     };
   }
-
-
 
   async findById(id: string): Promise<Hero | null> {
     return prisma.hero.findUnique({ where: { id } });

@@ -178,6 +178,15 @@ cd backend
 npm run test:unit
 ```
 
+## Para executar os testes de integração
+
+```bash
+# Acesse a pasta do backend
+cd backend
+
+npm run test:integration
+```
+
 ### 4. Inicie o Frontend
 
 ```bash

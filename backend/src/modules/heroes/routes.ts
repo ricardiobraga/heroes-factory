@@ -8,6 +8,7 @@ const heroStatusController = new HeroStatusController();
 
 heroesRoutes.post("/", controller.create);
 heroesRoutes.get("/", controller.list);
+heroesRoutes.get("/:id", controller.findById);
 heroesRoutes.put("/:id", controller.update);
 heroesRoutes.delete("/:id", controller.delete);
 heroesRoutes.patch("/:id/status", heroStatusController.update);

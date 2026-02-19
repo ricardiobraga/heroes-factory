@@ -4,6 +4,7 @@ import { CreateHeroService } from "../services/CreateHeroService";
 import { ListHeroesService } from "../services/ListHeroesService";
 import { UpdateHeroService } from "../services/UpdateHeroService";
 import { DeleteHeroService } from "../services/DeleteHeroService";
+import { FindHeroByIdService } from "../services/FindHeroByIdService";
 
 
 export class HeroController {
@@ -19,7 +20,6 @@ export class HeroController {
     async update(req: Request<{ id: string }>, res: Response) {
         const repository = new PrismaHeroRepository();
         const service = new UpdateHeroService(repository);
-        console.log(req.params.id);
         const hero = await service.execute(req.params.id, req.body);
 
         return res.status(200).json({ hero, sucess: true, message: `Herói atualizado com sucesso!` });
@@ -41,6 +41,15 @@ export class HeroController {
         const totalPages = Math.ceil(total / perPage);
 
         return res.json({ heroes, page, perPage, totalPages });
+    }
+
+    async findById(req: Request<{ id: string }>, res: Response) {
+        const repository = new PrismaHeroRepository();
+        const service = new FindHeroByIdService(repository);
+
+        const hero = await service.execute(req.params.id);
+
+        return res.status(200).json({ hero });
     }
 
     async delete(

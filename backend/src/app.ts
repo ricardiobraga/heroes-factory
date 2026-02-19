@@ -1,9 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { getCorsConfig } from './shared/config/cors';
-
 import { heroesRoutes } from '@/modules/heroes/routes';
 import { AppError } from '@/shared/errors/AppError';
+import { createPrismaClient } from './shared/database/prisma';
+
+export const prisma = createPrismaClient();
 
 const app = express();
 app.use(cors(getCorsConfig()));
