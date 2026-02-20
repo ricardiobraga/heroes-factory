@@ -11,10 +11,6 @@ const app = express();
 app.use(cors(getCorsConfig()));
 app.use(express.json());
 
-app.get('/', (_req, res) => {
-    return res.json({ status: 'ok' });
-});
-
 app.use('/heroes', heroesRoutes);
 
 app.get('/health', (_req, res) => {

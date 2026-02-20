@@ -6,7 +6,6 @@ const config: Config = {
   roots: ["<rootDir>/tests"],
   testMatch: ["**/*.spec.ts"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  
   clearMocks: true,
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",

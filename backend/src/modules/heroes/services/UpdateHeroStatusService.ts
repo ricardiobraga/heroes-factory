@@ -12,7 +12,6 @@ export class UpdateHeroStatusService {
         const heroExists = await this.heroRepository.findById(id);
         if (!heroExists) {
             throw new AppError("Heroi não encontrado", 404);
-            
         }
 
         const updatedHero = await this.heroRepository.updateStatus(id, data);

@@ -5,7 +5,7 @@ interface CorsConfig {
 }
 
 export const devCorsConfig: CorsConfig = {
-  origin: 'http://localhost:3000',
+  origin: process.env.CORS_ORIGIN || '*',
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'PUT'],
   credentials: true,
 };

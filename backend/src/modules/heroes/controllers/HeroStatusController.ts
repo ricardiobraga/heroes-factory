@@ -6,9 +6,6 @@ export class HeroStatusController {
         req: Request<{ id: string }>,
         res: Response
     ) {
-        
-        
-
         const repository = new PrismaHeroRepository();
         const service = new UpdateHeroStatusService(repository);
         const hero = await service.execute(req.params.id, req.body);

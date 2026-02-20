@@ -1,4 +1,6 @@
-import { prisma } from "../src/shared/database/prisma";
+import { createPrismaClient } from "@/shared/database/prisma";
+
+const prisma = createPrismaClient();
 
 const heroes = [
   {
