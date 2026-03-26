@@ -1,10 +1,10 @@
 # 🦸 Sistema de Gerenciamento de Heróis - Full Stack
 
-Um sistema completo de CRUD para gerenciamento de super-heróis desenvolvido com tecnologias modernas, seguindo boas práticas de arquitetura e design patterns.
+Um sistema completo de CRUD para gerenciamento de super heróis , seguindo boas práticas de arquitetura e design patterns.
 
 ## 📋 Visão Geral
 
-Este projeto demonstra habilidades full-stack implementando um sistema robusto com:
+Projeto full-stack implementando um sistema robusto com:
 
 - **Backend**: API RESTful em Node.js/TypeScript com Express e Prisma ORM
 - **Frontend**: Aplicação Next.js com App Router e Ant Design
